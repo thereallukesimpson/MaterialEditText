@@ -52,4 +52,7 @@
     <!-- Always show the helper text, no matter if the edit text is focused. -->
     <attr name="helperTextAlwaysShown" format="boolean" />
   </declare-styleable>
+  <declare-styleable name="MaterialRadioGroup">
+    <attr name="radioGroupTitle" format="string"/>
+  </declare-styleable>
 </resources>

@@ -45,6 +45,24 @@
         app:maxCharacters="20"
         app:primaryColor="?colorAccent" />
 
+      <com.rengwuxian.materialedittext.MaterialRadioGroup
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:radioGroupTitle="Test Title">
+        <RadioButton
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Radio 1"/>
+        <RadioButton
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Radio 2"/>
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="HAHAHAHAHAHA"/>
+      </com.rengwuxian.materialedittext.MaterialRadioGroup>
+
     </LinearLayout>
 
     <LinearLayout
