@@ -1,23 +1,26 @@
 package com.rengwuxian.materialedittext.sample;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.RadioButton;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.rengwuxian.materialedittext.MaterialRadioGroup;
 import com.rengwuxian.materialedittext.validation.RegexpValidator;
 
 
 public class MainActivity extends ActionBarActivity {
+
+
+  MaterialRadioGroup materialRadioGroup;
+  RadioButton radioOne;
+  RadioButton radioTwo;
+  Button radioButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,22 @@ public class MainActivity extends ActionBarActivity {
 		initSingleLineEllipsisEt();
 		initSetErrorEt();
 		initValidationEt();
+
+    materialRadioGroup = (MaterialRadioGroup) findViewById(R.id.material_group);
+    radioOne = (RadioButton) findViewById(R.id.radio_one);
+    radioTwo = (RadioButton) findViewById(R.id.radio_two);
+    radioButton = (Button) findViewById(R.id.validate_radio);
+
+    radioButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        if(!materialRadioGroup.validate()) {
+          materialRadioGroup.setError("Here is an error message");
+        } else {
+          materialRadioGroup.setError(null);
+        }
+      }
+    });
   }
 
 	private void initEnableBt() {

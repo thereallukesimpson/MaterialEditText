@@ -53,6 +53,6 @@
     <attr name="helperTextAlwaysShown" format="boolean" />
   </declare-styleable>
   <declare-styleable name="MaterialRadioGroup">
-    <attr name="radioGroupTitle" format="string"/>
+    <attr name="label" format="string"/>
   </declare-styleable>
 </resources>

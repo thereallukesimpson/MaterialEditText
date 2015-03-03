@@ -46,21 +46,27 @@
         app:primaryColor="?colorAccent" />
 
       <com.rengwuxian.materialedittext.MaterialRadioGroup
+        android:id="@+id/material_group"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        app:radioGroupTitle="Test Title">
+        app:baseColor="@android:color/white"
+        app:primaryColor="?colorAccent"
+        app:label="Test Label">
         <RadioButton
+          android:id="@+id/radio_one"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Radio 1"/>
         <RadioButton
+          android:id="@+id/radio_two"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Radio 2"/>
-        <TextView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:text="HAHAHAHAHAHA"/>
+        <RadioButton
+          android:id="@+id/radio_three"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Radio 3"/>
       </com.rengwuxian.materialedittext.MaterialRadioGroup>
 
     </LinearLayout>
@@ -73,6 +79,12 @@
       android:paddingLeft="@dimen/activity_horizontal_margin"
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin">
+
+      <Button
+        android:id="@+id/validate_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Validate RadioGroup"/>
 
       <TextView
         android:layout_width="match_parent"
