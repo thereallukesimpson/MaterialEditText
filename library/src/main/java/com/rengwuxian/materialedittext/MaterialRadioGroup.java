@@ -49,6 +49,8 @@ public class MaterialRadioGroup extends RadioGroup {
   int defaultBaseColor;
   int defaultPrimaryColor;
 
+  private boolean hasFocus;
+
   /**
    * the base color of the line and the texts. default is black.
    */
@@ -81,7 +83,7 @@ public class MaterialRadioGroup extends RadioGroup {
     radioGroupLabel = new TextView(getContext());
     radioGroupLabel.setText(label);
     radioGroupLabel.setTextColor(baseColor & 0x00ffffff | 0x44000000);
-    radioGroupLabel.setTextSize(getResources().getDimension(R.dimen.radio_label_text_size));
+    radioGroupLabel.setTextSize(getResources().getDimension(R.dimen.radio_label_text_size_initial));
     LayoutParams labelTitleParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
     this.addViewInLayout(radioGroupLabel, 0, labelTitleParams);
 
@@ -93,6 +95,7 @@ public class MaterialRadioGroup extends RadioGroup {
 
     errorText = new TextView(getContext());
     errorText.setTextColor(Color.parseColor("#e7492E"));
+    errorText.setVisibility(View.GONE);
     // this.addViewInLayout(line, 2, lineLayoutParams);
     this.addView(line);
     this.addView(errorText);
@@ -170,15 +173,19 @@ public class MaterialRadioGroup extends RadioGroup {
         o.setOnFocusChangeListener(new OnFocusChangeListener() {
           @Override
           public void onFocusChange(View view, boolean b) {
-            boolean hasFocus = false;
+            hasFocus = false;
             for (int counter2 = 0; counter2 < listOfRadioButtons.size(); counter2++) {
               if(listOfRadioButtons.get(counter2).isFocused()) {
+                radioGroupLabel.setTextSize(getResources().getDimension(R.dimen.radio_label_text_size_small));
                 radioGroupLabel.setTextColor(defaultPrimaryColor);
                 hasFocus = true;
               }
             }
             if(!hasFocus) {
               radioGroupLabel.setTextColor(defaultBaseColor);
+              if(!validate()) {
+                radioGroupLabel.setTextSize(getResources().getDimension(R.dimen.radio_label_text_size_initial));
+              }
             }
           }
         });
@@ -192,6 +199,7 @@ public class MaterialRadioGroup extends RadioGroup {
    */
   public void setError(CharSequence error) {
     if(error != null) {
+      errorText.setVisibility(View.VISIBLE);
       errorText.setText(error);
       line.setVisibility(View.VISIBLE);
     } else {
